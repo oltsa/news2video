@@ -1,0 +1,123 @@
+{
+    "name": "news_culture",
+    "schema_version": "0.2.0",
+    "canvas": { "width": 1080, "height": 1920 },
+    "duration_sec": 15,
+    "fps": 30,
+    "layers": [
+        {
+            "name": "background",
+            "type": "image",
+            "file": "{{SYSTEM_ASSETS}}/default.png",
+            "start_sec": 0, "end_sec": 15,
+            "motion": { "type": "drift", "speed": "slow", "zoom_range": [1.0, 1.1] },
+            "post_effect": "cool"
+        },
+        
+        {
+            "name": "carousel_card",
+            "type": "box",
+            "pos": { "x": 540, "y": 750 },
+            "gravity": "center",
+            "width": 900,
+            "height": 400,
+            "fill": "rgba(255, 255, 255, 0.9)",
+            "radius": 0,
+            "shadow": { "opacity": 0.3, "blur": 20, "dx": 0, "dy": 10 },
+            "start_sec": 2.0,
+            "end_sec": 13.5,
+            "animations": [{ "type": "pop_in", "duration_sec": 0.4 }]
+        },
+
+        {
+            "name": "carousel_text",
+            "type": "text_carousel",
+            "pos": { "x": 540, "y": 750 },
+            "gravity": "center",
+            "start_sec": 2.3,
+            "end_sec": 13.5,
+            "font": { "file": "{{SYSTEM_ASSETS}}/fonts/Verdana.ttf", "size": 28, "color": "#000000", "align": "center" },
+            "boundingBox": { "width": 820, "height": 320 },
+            "animations": [
+                { "type": "fade_in", "duration_sec": 0.4 },
+                { "type": "fade_out", "duration_sec": 0.3 }
+            ]
+        },
+
+        {
+            "name": "category_pill",
+            "type": "text",
+            "text_content": "CULTURE",
+            "pos": { "x": 80, "y": 1020 },
+            "gravity": "NorthWest",
+            "font": { "file": "{{SYSTEM_ASSETS}}/fonts/DIN Alternate Bold.ttf", "size": 40, "color": "#FFFFFF", "align": "center" },
+            "box": { "fill": "#000000", "padding_x": 30, "padding_y": 15, "radius": 0 },
+            "start_sec": 0.6,
+            "end_sec": 13.5,
+            "animations": [{ "type": "pop_in", "duration_sec": 0.3 }]
+        },
+
+        {
+            "name": "yellow_billboard",
+            "type": "box",
+            "pos": { "x": 0, "y": 1150 },
+            "width": 1080,
+            "height": 770,
+            "box": {
+                "gradient_start": "#FFD200",
+                "gradient_end": "rgba(255,210,0,0.85)",
+                "gradient_angle": 45
+            }, 
+            "start_sec": 0,
+            "end_sec": 15,
+            "animations": [{ "type": "slide_in", "direction": "bottom", "duration_sec": 0.5 }]
+        },
+
+        {
+            "name": "title",
+            "type": "text",
+            "text_content": "{{.title}}",
+            "pos": { "x": 540, "y": 1400 },
+            "gravity": "center",
+            "font": { "file": "{{SYSTEM_ASSETS}}/fonts/DIN Condensed Bold.ttf", "size": 95, "color": "#000000", "align": "center" },
+            "boundingBox": { "width": 950 },
+            "start_sec": 0.5,
+            "end_sec": 13.5,
+            "animations": [{ "type": "fade_in", "duration_sec": 0.4 }]
+        },
+        {
+             "name": "website_small",
+             "type": "text",
+             "text_content": "{{.website}}",
+             "pos": { "x": 540, "y": 1750 },
+             "gravity": "center",
+             "font": { "file": "{{SYSTEM_ASSETS}}/fonts/Verdana.ttf", "size": 35, "color": "#000000" },
+             "start_sec": 0.5, 
+             "end_sec": 13.5,
+             "animations": [{ "type": "fade_in", "duration_sec": 0.3 }]
+        },
+
+        {
+            "name": "outro_overlay",
+            "type": "box",
+            "pos": { "x": 0, "y": 0 },
+            "width": 1080,
+            "height": 1920,
+            "fill": "#FFD200",
+            "start_sec": 13.5,
+            "end_sec": 15,
+            "animations": [{ "type": "fade_in", "duration_sec": 0.3 }]
+        },
+        {
+            "name": "outro_cta",
+            "type": "text",
+            "text_content": "READ THE FULL STORY:\n{{.website}}",
+            "pos": { "x": 540, "y": 960 },
+            "gravity": "center",
+            "font": { "file": "{{SYSTEM_ASSETS}}/fonts/DIN Condensed Bold.ttf", "size": 90, "color": "#000000", "align": "center" },
+            "start_sec": 13.7,
+            "end_sec": 15,
+            "animations": [{ "type": "pop_in", "duration_sec": 0.4 }]
+        }
+    ]
+}

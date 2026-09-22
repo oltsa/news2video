@@ -1,0 +1,46 @@
+{
+    "name": "demo_template",
+    "schema_version": "0.2.0",
+    "canvas": { "width": 1080, "height": 1920 },
+    "duration_sec": 20,
+    "fps": 30,
+    "layers": [
+        {
+            "name": "background",
+            "type": "image",
+            "file": "{{SYSTEM_ASSETS}}/backgrounds/default.png",
+            "start_sec": 0, "end_sec": 20,
+            "motion": { "type": "drift", "speed": "slow", "zoom_range": [1.0, 1.05], "pan_x_range": [0.48, 0.52], "pan_y_range": [0.48, 0.52] }
+        },
+        {
+            "name": "title",
+            "type": "title",
+            "pos": { "x": 540, "y": 400 }, "gravity": "center",
+            "start_sec": 1, "end_sec": 19,
+            "boundingBox": { "width": 960, "height": 500 },
+            "font": { "file": "{{SYSTEM_ASSETS}}/fonts/DIN Alternate Bold.ttf", "size": 110, "color": "#FFFFFF", "align": "center" },
+            "shadow": { "opacity": 0.6, "blur": 15, "dx": 3, "dy": 3 }
+        },
+        {
+            "name": "text_carousel",
+            "type": "text_carousel",
+            "pos": { "x": 540, "y": 1200 }, "gravity": "center",
+            "start_sec": 8.5, "end_sec": 19.5,
+            "boundingBox": { "width": 900 },
+            "font": { "file": "{{SYSTEM_ASSETS}}/fonts/Verdana.ttf", "size": 50, "color": "#000000", "align": "center" },
+            "box": { "fill": "#FFFFFF", "padding_x": 40, "padding_y": 30, "radius": 10 },
+            "animations": [
+                { "type": "pop_in", "duration_sec": 0.4 },
+                { "type": "fade_out", "duration_sec": 0.4 }
+            ]
+        },
+        {
+            "name": "logo",
+            "type": "image",
+            "file": "{{PROJECT_ASSETS}}/logo.png",
+            "sizing": { "mode": "fit", "width": 250 },
+            "pos": { "x": 40, "y": 40 }, "gravity": "SouthEast",
+            "start_sec": 0, "end_sec": 20
+        }
+    ]
+}

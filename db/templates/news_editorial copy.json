@@ -1,0 +1,80 @@
+{
+    "name": "news_editorial",
+    "schema_version": "0.2.0",
+    "canvas": { "width": 1080, "height": 1920 },
+    "duration_sec": 15,
+    "fps": 30,
+    "layers": [
+        {
+            "name": "background",
+            "type": "image",
+            "file": "{{SYSTEM_ASSETS}}/default.png",
+            "start_sec": 0, "end_sec": 15,
+            "motion": { "type": "drift", "speed": "slow", "zoom_range": [1.0, 1.1] },
+            "post_effect": "film"
+        },
+        {
+            "name": "datetime_box",
+            "type": "text",
+            "text_content": "{{.datetime}}",
+            "pos": { "x": 90, "y": 380 },
+            "gravity": "NorthEast",
+            "font": { "file": "{{SYSTEM_ASSETS}}/fonts/DIN Condensed Bold.ttf", "size": 50, "color": "#000000", "align": "center" },
+            "box": { "fill": "#FFFFFF", "padding_x": 25, "padding_y": 15, "radius": 0 },
+            "start_sec": 0, "end_sec": 15,
+            "animations": [
+                { "type": "slide_in", "direction": "top", "distance": 40, "duration_sec": 0.5 },
+                { "type": "fade_in", "duration_sec": 0.3 }
+            ]
+        },
+        {
+            "name": "header_box",
+            "type": "text",
+            "text_content": "{{.topic}}",
+            "pos": { "x": 540, "y": 600 },
+            "gravity": "South",
+            "font": { "file": "{{SYSTEM_ASSETS}}/fonts/DIN Condensed Bold.ttf", "size": 80, "color": "#FFFFFF", "align": "center" },
+            "boundingBox": { "width": 900 },
+            "box": { "fill": "#b80000", "padding_x": 20, "padding_y": 20, "radius": 0 },
+            "start_sec": 0, "end_sec": 15,
+            "animations": [{ "type": "pop_in", "duration_sec": 0.3 }]
+        },
+        {
+            "name": "title_box",
+            "type": "text",
+            "text_content": "{{.title}}",
+            "pos": { "x": 540, "y": 600 },
+            "gravity": "North",
+            "font": { "file": "{{SYSTEM_ASSETS}}/fonts/DIN Alternate Bold.ttf", "size": 85, "color": "#000000", "align": "center" },
+            "boundingBox": { "width": 900 },
+            "box": { "fill": "#FFFFFF", "padding_x": 50, "padding_y": 50, "radius": 0 },
+            "start_sec": 0.2, "end_sec": 15,
+            "animations": [{ "type": "pop_in", "duration_sec": 0.4 }]
+        },
+        {
+            "name": "text_carousel",
+            "type": "text_carousel",
+            "pos": { "x": 540, "y": 1300 },
+            "gravity": "center",
+            "start_sec": 1.5, "end_sec": 13,
+            "font": { "file": "{{SYSTEM_ASSETS}}/fonts/Verdana.ttf", "size": 55, "color": "#FFFFFF", "align": "center" },
+            "boundingBox": { "width": 950 },
+            "box": { "fill": "rgba(0,0,0,0.7)", "padding_x": 40, "padding_y": 30, "radius": 10 },
+            "animations": [
+                { "type": "slide_in", "direction": "bottom", "distance": 50, "duration_sec": 0.5 },
+                { "type": "fade_in", "duration_sec": 0.3 },
+                { "type": "fade_out", "duration_sec": 0.3 }
+            ]
+        },
+        {
+             "name": "website_footer",
+             "type": "text",
+             "text_content": "READ MORE AT\n{{.website}}",
+             "pos": { "x": 540, "y": 1600 },
+             "gravity": "center",
+             "font": { "file": "{{SYSTEM_ASSETS}}/fonts/Verdana.ttf", "size": 40, "color": "#FFFFFF" },
+             "start_sec": 13, "end_sec": 15,
+             "animations": [{ "type": "slide_in", "direction": "bottom", "distance": 30, "duration_sec": 0.4 }]
+        }
+    ]
+}

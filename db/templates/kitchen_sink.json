@@ -1,0 +1,121 @@
+{
+    "name": "kitchen_sink_template",
+    "schema_version": "0.2.0",
+    "canvas": {
+        "width": 1080,
+        "height": 1920
+    },
+    "duration_sec": 30,
+    "fps": 30,
+    "layers": [
+        {
+            "name": "background",
+            "type": "image",
+            "file": "{{SYSTEM_ASSETS}}/default.png",
+            "start_sec": 0,
+            "end_sec": 30,
+            "motion": { "type": "drift", "speed": "medium", "zoom_range": [1.0, 1.2], "pan_x_range": [0.40, 0.60], "pan_y_range": [0.50, 0.60] },
+            "post_effect": "warm"
+        },
+        {
+            "name": "title",
+            "type": "text",
+            "text_content": "{{.title}}",
+            "pos": { "x": 60, "y": 550 },
+            "gravity": "West",
+            "start_sec": 0.5,
+            "end_sec": 26,
+            "font": { "file": "{{SYSTEM_ASSETS}}/fonts/DIN Alternate Bold.ttf", "size": 100, "color": "#FFFFFF", "align": "left" },
+            "boundingBox": { "width": 960, "height": 550 },
+            "shadow": { "opacity": 0.6, "blur": 15, "dx": 3, "dy": 3 }
+        },
+        {
+            "name": "text_carousel",
+            "type": "text_carousel",
+            "pos": { "x": 540, "y": 1200 },
+            "gravity": "center",
+            "start_sec": 1.5,
+            "end_sec": 26,
+            "font": { "file": "{{SYSTEM_ASSETS}}/fonts/Verdana.ttf", "size": 48, "color": "#000000", "align": "center" },
+            "boundingBox": {
+                "width": 900
+            },
+            "animations": [
+                { "type": "fade_in", "duration_sec": 0.4 },
+                { "type": "fade_out", "duration_sec": 0.4 }
+            ],
+            "box": {
+                "fill": "#FFFFFF",
+                "padding_x": 40,
+                "padding_y": 30,
+                "radius": 0
+            }
+        },
+        {
+            "name": "location_icon",
+            "type": "icon",
+            "file": "{{SYSTEM_ASSETS}}/icons/map-pin.svg",
+            "pos": { "x": 100, "y": 1450 },
+            "gravity": "West",
+            "sizing": { "mode": "fit", "height": 40 },
+            "font": { "color": "#FFFFFF" },
+            "start_sec": 1, "end_sec": 29.5,
+            "animations": [{ "type": "pop_in", "duration_sec": 0.4 }, { "type": "fade_out", "duration_sec": 0.4 }]
+        },
+        {
+            "name": "location",
+            "type": "text",
+            "text_content": "{{.location}}",
+            "pos": { "x": 160, "y": 1450 },
+            "gravity": "West",
+            "font": { "file": "{{SYSTEM_ASSETS}}/fonts/Verdana.ttf", "size": 36, "color": "#FFFFFF" },
+            "start_sec": 1, "end_sec": 29.5,
+            "box": { "fill": "rgba(0, 0, 0, 0.5)", "padding_x": 20, "padding_y": 15, "radius": 10 },
+            "animations": [{ "type": "pop_in", "duration_sec": 0.4 }, { "type": "fade_out", "duration_sec": 0.4 }]
+        },
+        {
+            "name": "datetime_icon",
+            "type": "icon",
+            "file": "{{SYSTEM_ASSETS}}/icons/calendar.svg",
+            "pos": { "x": 100, "y": 1530 },
+            "gravity": "West",
+            "sizing": { "mode": "fit", "height": 40 },
+            "font": { "color": "#FFFFFF" },
+            "start_sec": 2.5, "end_sec": 26,
+            "animations": [{ "type": "pop_in", "duration_sec": 0.4 }, { "type": "fade_out", "duration_sec": 0.4 }]
+        },
+        {
+            "name": "datetime",
+            "type": "text",
+            "text_content": "{{.datetime}}",
+            "pos": { "x": 160, "y": 1530 },
+            "gravity": "West",
+            "font": { "file": "{{SYSTEM_ASSETS}}/fonts/Verdana.ttf", "size": 36, "color": "#FFFFFF" },
+            "start_sec": 2.5, "end_sec": 26,
+            "box": { "fill": "rgba(0, 0, 0, 0.5)", "padding_x": 20, "padding_y": 15, "radius": 10 },
+            "animations": [{ "type": "pop_in", "duration_sec": 0.4 }, { "type": "fade_out", "duration_sec": 0.4 }]
+        },
+        {
+            "name": "website",
+            "type": "text",
+            "text_content": "{{.website}}",
+            "pos": { "x": 540, "y": 960 },
+            "gravity": "center",
+            "start_sec": 26,
+            "end_sec": 30,
+            "font": { "file": "{{SYSTEM_ASSETS}}/fonts/DIN Alternate Bold.ttf", "size": 80, "color": "#FFFFFF", "align": "center" },
+            "boundingBox": { "width": 900 },
+            "animations": [{ "type": "pop_in", "duration_sec": 0.5 }, { "type": "fade_out", "duration_sec": 0.5 }]
+        },
+        {
+            "name": "logo",
+            "type": "image",
+            "file": "{{PROJECT_ASSETS}}/logo.png",
+            "sizing": { "mode": "fit", "width": 250 },
+            "pos": { "x": 40, "y": 40 },
+            "gravity": "SouthEast",
+            "start_sec": 0,
+            "end_sec": 30
+        }
+    ]
+}

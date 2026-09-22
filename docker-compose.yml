@@ -1,0 +1,155 @@
+# docker-compose.yml
+services:
+  orchestrator:
+    build:
+      context: .
+      dockerfile: orchestrator/Dockerfile
+    env_file: .env
+    ports:
+      - "8080:8080"
+    depends_on:
+      redis:
+        condition: service_started
+      postgres:
+        condition: service_healthy
+      minio:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:8080/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - ./logs:/var/log/app
+
+  renderer:
+    build:
+      context: .
+      dockerfile: renderer/Dockerfile
+    env_file: .env
+    ports:
+      - "8081:8081" # Expose health check port
+    volumes:
+      - type: bind
+        source: ${PWD}/data/shared_assets/fonts
+        target: /usr/share/fonts/custom
+      - ./work:/app/workdir
+      - ./logs:/var/log/app
+    depends_on:
+      postgres:
+        condition: service_healthy
+      minio:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    deploy:
+      replicas: 1
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:8081/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+
+  distributor:
+    build:
+      context: .
+      dockerfile: distributor/Dockerfile
+    env_file: .env
+    ports:
+      - "8082:8082" # Expose health check port
+    volumes:
+      - ./work:/app/workdir
+      - ./logs:/var/log/app
+    depends_on:
+      redis:
+        condition: service_started
+      minio:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:8082/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: "redis:8.2.3-alpine"
+    ports:
+      - "6379:6379"
+
+  postgres:
+    image: "postgres:15.4-alpine"
+    env_file: .env
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./db/templates:/docker-entrypoint-initdb.d/templates:ro
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U user -d videogen"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  minio:
+    image: quay.io/minio/minio:RELEASE.2025-09-07T16-13-09Z
+    command: server /data --console-address ":9001"
+    env_file: .env
+    volumes:
+      - miniodata:/data
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  createbuckets:
+    image: quay.io/minio/mc:RELEASE.2025-08-13T08-35-41Z
+    depends_on:
+      minio:
+        condition: service_healthy
+    env_file: .env
+    volumes:
+      - ./data:/data
+      - ./config:/config
+
+    entrypoint: >
+      /bin/sh -c "
+      set -e;
+
+      until /usr/bin/mc alias set local http://minio:9000 $${MINIO_ROOT_USER} $${MINIO_ROOT_PASSWORD}; do
+        sleep 1;
+      done;
+
+      /usr/bin/mc mb --ignore-existing local/$${S3_BUCKET_NAME};
+
+      cat /config/minio_lifecycle.json | /usr/bin/mc ilm import local/$${S3_BUCKET_NAME};
+
+      /usr/bin/mc mirror --exclude '.DS_Store' /data/demo_organization/ local/$${S3_BUCKET_NAME}/organizations/demo_organization/;
+
+      /usr/bin/mc mirror --exclude '.DS_Store' /data/shared_assets/ local/$${S3_BUCKET_NAME}/system/;
+
+      exit 0;
+      "
+  cli:
+    build:
+      context: .
+      dockerfile: cmd/admin/Dockerfile
+    env_file: .env
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - .:/app
+    working_dir: /app
+    entrypoint: ["sleep", "infinity"]
+    
+
+volumes:
+  pgdata:
+  miniodata:

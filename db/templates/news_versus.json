@@ -1,0 +1,216 @@
+{
+    "name": "news_versus",
+    "schema_version": "0.2.0",
+    "canvas": { "width": 1080, "height": 1920 },
+    "duration_sec": 15,
+    "fps": 30,
+    "layers": [
+        {
+            "name": "bg",
+            "type": "image",
+            "file": "{{SYSTEM_ASSETS}}/default.png",
+            "start_sec": 0, "end_sec": 15,
+            "motion": { "type": "drift", "speed": "slow" },
+            "filters": { "brightness": -0.7 }
+        },
+
+        {
+            "name": "img_1_top",
+            "type": "image",
+            "file": "{{.image_1}}",
+            "width": 1300, "height": 960,
+            "sizing": { "mode": "cover" },
+            "pos": { "x": -1300, "y": 0 },
+            "start_sec": 1.5, "end_sec": 7.5,
+            "animations": [
+                { "type": "move", "start_sec": 1.5, "duration_sec": 0.8, "target_x": -80, "easing": "ease_out" },
+                { "type": "move", "start_sec": 2.3, "duration_sec": 4.5, "target_x": 0, "easing": "linear" },
+                { "type": "move", "start_sec": 6.8, "duration_sec": 0.7, "target_x": 1080, "easing": "ease_in" }
+            ]
+        },
+        {
+            "name": "img_2_bottom",
+            "type": "image",
+            "file": "{{.image_2}}",
+            "width": 1300, "height": 960,
+            "sizing": { "mode": "cover" },
+            "pos": { "x": 1080, "y": 960 },
+            "start_sec": 1.5, "end_sec": 7.5,
+            "animations": [
+                { "type": "move", "start_sec": 1.5, "duration_sec": 0.8, "target_x": 0, "easing": "ease_out" },
+                { "type": "move", "start_sec": 2.3, "duration_sec": 4.5, "target_x": -80, "easing": "linear" },
+                { "type": "move", "start_sec": 6.8, "duration_sec": 0.7, "target_x": -1300, "easing": "ease_in" }
+            ]
+        },
+
+        {
+            "name": "credit_1_icon",
+            "type": "icon",
+            "file": "{{SYSTEM_ASSETS}}/icons/camera.svg",
+            "pos": { "x": 1030, "y": 480 },
+            "gravity": "East",
+            "sizing": { "mode": "fit", "width": 35 },
+            "font": { "color": "#FFFFFF" },
+            "shadow": { "opacity": 1.0, "blur": 10, "dx": 2, "dy": 2 },
+            "start_sec": 2.5, "end_sec": 7.0,
+            "animations": [{ "type": "pop_in", "duration_sec": 0.3 }]
+        },
+        {
+            "name": "credit_1_text",
+            "type": "text",
+            "text_content": "{{.credit_1}}",
+            "pos": { "x": 980, "y": 480 },
+            "gravity": "East",
+            "font": { "file": "{{SYSTEM_ASSETS}}/fonts/Verdana.ttf", "size": 30, "color": "#FFFFFF", "align": "right" },
+            "shadow": { "opacity": 1.0, "blur": 10, "dx": 2, "dy": 2 },
+            "start_sec": 2.6, "end_sec": 7.0,
+            "animations": [{ "type": "fade_in", "duration_sec": 0.3 }]
+        },
+
+        {
+            "name": "credit_2_icon",
+            "type": "icon",
+            "file": "{{SYSTEM_ASSETS}}/icons/camera.svg",
+            "pos": { "x": 50, "y": 1440 },
+            "gravity": "West",
+            "sizing": { "mode": "fit", "width": 35 },
+            "font": { "color": "#FFFFFF" },
+            "shadow": { "opacity": 1.0, "blur": 10, "dx": 2, "dy": 2 },
+            "start_sec": 2.5, "end_sec": 7.0,
+            "animations": [{ "type": "pop_in", "duration_sec": 0.3 }]
+        },
+        {
+            "name": "credit_2_text",
+            "type": "text",
+            "text_content": "{{.credit_2}}",
+            "pos": { "x": 100, "y": 1440 },
+            "gravity": "West",
+            "font": { "file": "{{SYSTEM_ASSETS}}/fonts/Verdana.ttf", "size": 30, "color": "#FFFFFF", "align": "left" },
+            "shadow": { "opacity": 1.0, "blur": 10, "dx": 2, "dy": 2 },
+            "start_sec": 2.6, "end_sec": 7.0,
+            "animations": [{ "type": "fade_in", "duration_sec": 0.3 }]
+        },
+
+
+        {
+            "name": "img_3_top",
+            "type": "image",
+            "file": "{{.image_3}}",
+            "width": 1300, "height": 960,
+            "sizing": { "mode": "cover" },
+            "pos": { "x": -1300, "y": 0 },
+            "start_sec": 7.5, "end_sec": 15,
+            "animations": [
+                { "type": "move", "start_sec": 7.5, "duration_sec": 0.8, "target_x": -80, "easing": "ease_out" },
+                { "type": "move", "start_sec": 8.3, "duration_sec": 5.0, "target_x": 0, "easing": "linear" }
+            ]
+        },
+        {
+            "name": "img_4_bottom",
+            "type": "image",
+            "file": "{{.image_4}}",
+            "width": 1300, "height": 960,
+            "sizing": { "mode": "cover" },
+            "pos": { "x": 1080, "y": 960 },
+            "start_sec": 7.5, "end_sec": 15,
+            "animations": [
+                { "type": "move", "start_sec": 7.5, "duration_sec": 0.8, "target_x": 0, "easing": "ease_out" },
+                { "type": "move", "start_sec": 8.3, "duration_sec": 5.0, "target_x": -80, "easing": "linear" }
+            ]
+        },
+
+        {
+            "name": "credit_3_icon",
+            "type": "icon",
+            "file": "{{SYSTEM_ASSETS}}/icons/camera.svg",
+            "pos": { "x": 1030, "y": 480 },
+            "gravity": "East",
+            "sizing": { "mode": "fit", "width": 35 },
+            "font": { "color": "#FFFFFF" },
+            "shadow": { "opacity": 1.0, "blur": 10, "dx": 2, "dy": 2 },
+            "start_sec": 8.5, "end_sec": 13.5,
+            "animations": [{ "type": "pop_in", "duration_sec": 0.3 }]
+        },
+        {
+            "name": "credit_3_text",
+            "type": "text",
+            "text_content": "{{.credit_3}}",
+            "pos": { "x": 980, "y": 480 },
+            "gravity": "East",
+            "font": { "file": "{{SYSTEM_ASSETS}}/fonts/Verdana.ttf", "size": 30, "color": "#FFFFFF", "align": "right" },
+            "shadow": { "opacity": 1.0, "blur": 10, "dx": 2, "dy": 2 },
+            "start_sec": 8.6, "end_sec": 13.5,
+            "animations": [{ "type": "fade_in", "duration_sec": 0.3 }]
+        },
+        {
+            "name": "credit_4_icon",
+            "type": "icon",
+            "file": "{{SYSTEM_ASSETS}}/icons/camera.svg",
+            "pos": { "x": 50, "y": 1440 },
+            "gravity": "West",
+            "sizing": { "mode": "fit", "width": 35 },
+            "font": { "color": "#FFFFFF" },
+            "shadow": { "opacity": 1.0, "blur": 10, "dx": 2, "dy": 2 },
+            "start_sec": 8.5, "end_sec": 13.5,
+            "animations": [{ "type": "pop_in", "duration_sec": 0.3 }]
+        },
+        {
+            "name": "credit_4_text",
+            "type": "text",
+            "text_content": "{{.credit_4}}",
+            "pos": { "x": 100, "y": 1440 },
+            "gravity": "West",
+            "font": { "file": "{{SYSTEM_ASSETS}}/fonts/Verdana.ttf", "size": 30, "color": "#FFFFFF", "align": "left" },
+            "shadow": { "opacity": 1.0, "blur": 10, "dx": 2, "dy": 2 },
+            "start_sec": 8.6, "end_sec": 13.5,
+            "animations": [{ "type": "fade_in", "duration_sec": 0.3 }]
+        },
+
+
+        {
+            "name": "divider_line",
+            "type": "box",
+            "pos": { "x": 0, "y": 945 },
+            "width": 1080, "height": 30,
+            "fill": "#FFFFFF",
+            "start_sec": 0.5,
+            "end_sec": 13.5,
+            "animations": [{ "type": "slide_in", "direction": "left", "duration_sec": 0.5 }]
+        },
+        
+        {
+            "name": "title_box",
+            "type": "text",
+            "text_content": "{{.title}}",
+            "pos": { "x": 540, "y": 960 },
+            "gravity": "center",
+            "font": { "file": "{{SYSTEM_ASSETS}}/fonts/DIN Condensed Bold.ttf", "size": 90, "color": "#000000", "align": "center" },
+            "box": { "fill": "#FFFFFF", "padding_x": 40, "padding_y": 30, "radius": 0, "border_width": 10, "border_color": "#FFFFFF" },
+            "start_sec": 0.8, "end_sec": 13.5,
+            "animations": [{ "type": "pop_in", "duration_sec": 0.4 }]
+        },
+
+        {
+            "name": "outro_overlay",
+            "type": "box",
+            "pos": { "x": 0, "y": 0 },
+            "width": 1080,
+            "height": 1920,
+            "fill": "#FFFFFF",
+            "start_sec": 13.5,
+            "end_sec": 15,
+            "animations": [{ "type": "fade_in", "duration_sec": 0.3 }]
+        },
+        {
+            "name": "outro_text",
+            "type": "text",
+            "text_content": "VOTE NOW:\n{{.website}}",
+            "pos": { "x": 540, "y": 960 },
+            "gravity": "center",
+            "font": { "file": "{{SYSTEM_ASSETS}}/fonts/DIN Alternate Bold.ttf", "size": 80, "color": "#000000", "align": "center" },
+            "start_sec": 13.7,
+            "end_sec": 15,
+            "animations": [{ "type": "pop_in", "duration_sec": 0.3 }]
+        }
+    ]
+}

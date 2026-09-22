@@ -1,0 +1,120 @@
+{
+    "name": "news_feature",
+    "schema_version": "0.2.0",
+    "canvas": { "width": 1080, "height": 1920 },
+    "duration_sec": 18,
+    "fps": 30,
+    "layers": [
+        {
+            "name": "background",
+            "type": "image",
+            "file": "{{SYSTEM_ASSETS}}/default.png",
+            "start_sec": 0, "end_sec": 18,
+            "motion": { "type": "drift", "speed": "slow", "zoom_range": [1.0, 1.1] },
+            "post_effect": "film"
+        },
+        {
+            "name": "red_line",
+            "type": "box",
+            "pos": { "x": 40, "y": 100 },
+            "width": 20,
+            "height": 1600,
+            "fill": "#E60000",
+            "start_sec": 0,
+            "end_sec": 18,
+            "animations": [
+                { "type": "slide_in", "direction": "top", "duration_sec": 0.8 },
+                { "type": "fade_in", "duration_sec": 0.5 }
+            ]
+        },
+        {
+            "name": "topic_pill",
+            "type": "text",
+            "text_content": "{{.topic}}",
+            "pos": { "x": 80, "y": 200 },
+            "gravity": "NorthWest",
+            "font": { "file": "{{SYSTEM_ASSETS}}/fonts/DIN Condensed Bold.ttf", "size": 60, "color": "#000000", "align": "left" },
+            "box": { "fill": "#FFFFFF", "padding_x": 30, "padding_y": 15, "radius": 0 },
+            "start_sec": 0.5, "end_sec": 18,
+            "animations": [
+                { "type": "slide_in", "direction": "left", "distance": 50, "duration_sec": 0.5 },
+                { "type": "fade_in", "duration_sec": 0.3 }
+            ]
+        },
+        {
+            "name": "title",
+            "type": "text",
+            "text_content": "{{.title}}",
+            "pos": { "x": 80, "y": 450 },
+            "gravity": "NorthWest",
+            "font": { "file": "{{SYSTEM_ASSETS}}/fonts/DIN Alternate Bold.ttf", "size": 85, "color": "#FFFFFF", "align": "left" },
+            "boundingBox": { "width": 900 },
+            "shadow": { "opacity": 1.0, "blur": 10, "dx": 5, "dy": 5 },
+            "start_sec": 0.8, "end_sec": 18,
+            "animations": [{ "type": "fade_in", "duration_sec": 1.0 }]
+        },
+        
+        {
+            "name": "info_card_bg",
+            "type": "box",
+            "pos": { "x": 60, "y": 1190 },
+            "width": 960,
+            "height": 400,
+            "fill": "#000000",
+            "start_sec": 1.5,
+            "end_sec": 18,
+            "animations": [
+                { "type": "slide_in", "direction": "bottom", "distance": 50, "duration_sec": 0.6 },
+                { "type": "fade_in", "duration_sec": 0.4 }
+            ]
+        },
+        {
+            "name": "text_carousel",
+            "type": "text_carousel",
+            "pos": { "x": 100, "y": 1240 },
+            "gravity": "NorthWest",
+            "start_sec": 2.0,
+            "end_sec": 18,
+            "font": { "file": "{{SYSTEM_ASSETS}}/fonts/Verdana.ttf", "size": 50, "color": "#FFFFFF", "align": "left" },
+            "boundingBox": { "width": 880 },
+            "animations": [
+                { "type": "fade_in", "duration_sec": 1.0 },
+                { "type": "fade_out", "duration_sec": 0.3 }
+            ]
+        },
+        {
+             "name": "website_footer",
+             "type": "text",
+             "text_content": "LUE LISÄÄ: {{.website}}",
+             "pos": { "x": 100, "y": 1540 },
+             "gravity": "NorthWest",
+             "font": { "file": "{{SYSTEM_ASSETS}}/fonts/DIN Condensed Bold.ttf", "size": 40, "color": "#FF3333" },
+             "start_sec": 2.2,
+             "end_sec": 18,
+             "animations": [{ "type": "fade_in", "duration_sec": 0.5 }]
+        },
+
+        {
+            "name": "outro_overlay",
+            "type": "box",
+            "pos": { "x": 0, "y": 0 },
+            "width": 1080,
+            "height": 1920,
+            "fill": "#E60000",
+            "start_sec": 16.0,
+            "end_sec": 18,
+            "animations": [{ "type": "fade_in", "duration_sec": 0.3 }]
+        },
+        {
+            "name": "outro_cta",
+            "type": "text",
+            "text_content": "LUE KOKO JUTTU:\n{{.website}}",
+            "pos": { "x": 540, "y": 960 },
+            "gravity": "center",
+            "font": { "file": "{{SYSTEM_ASSETS}}/fonts/DIN Condensed Bold.ttf", "size": 90, "color": "#FFFFFF", "align": "center" },
+            "start_sec": 16.2,
+            "end_sec": 18,
+            "animations": [{ "type": "pop_in", "duration_sec": 0.4 }]
+        }
+    ]
+}

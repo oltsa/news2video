@@ -1,0 +1,14 @@
+{
+    "Rules": [
+        {
+            "ID": "expire-outputs-after-7-days",
+            "Status": "Enabled",
+            "Filter": {
+                "Prefix": "organizations/"
+            },
+            "Expiration": {
+                "Days": 7
+            }
+        }
+    ]
+}

@@ -1,0 +1,6 @@
+# .dockerignore
+.DS_Store
+*.log
+.git
+.vscode
+work
